@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { } from 'vue'
+
 import football from './football/football.vue'
 import hotBlack from './hotBlackList/hotBlack.vue'
 import hotRed from './hotRedList/hotRedList.vue'

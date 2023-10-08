@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { } from 'vue'
+
 const columns = [
   {
     title: '日期',
