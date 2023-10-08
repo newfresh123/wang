@@ -3,7 +3,7 @@
     <div class="text-2xl">
       热门红单
     </div>
-    <a-table :columns="columns" :data-source="data" >
+    <a-table :columns="columns" :data-source="data">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'date'">
           <a>
@@ -17,17 +17,17 @@
         </template>
         <template v-else-if="column.key === 'spent'">
           <span>
-            {{record.spent}}
+            {{ record.spent }}
           </span>
         </template>
-        <template v-else-if="column.key ==='money'">
+        <template v-else-if="column.key === 'money'">
           <span>
-            {{record.money}}
+            {{ record.money }}
           </span>
         </template>
         <template v-else-if="column.key === 'result'">
           <span>
-            {{record.result}}
+            {{ record.result }}
           </span>
         </template>
       </template>
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { } from 'vue'
+import { } from 'vue';
 const columns = [
   {
     title: '日期',
@@ -89,4 +89,5 @@ const data = [
 ];
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>

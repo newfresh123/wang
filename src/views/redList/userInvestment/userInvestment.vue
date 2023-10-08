@@ -1,10 +1,9 @@
-<template>
- 
-</template>
+<template></template>
 
 <script setup lang="ts">
 import { } from 'vue'
 
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
