@@ -9,9 +9,10 @@
     <football></football>
     <!--直接投资回报率排名-->
     <directInvestment></directInvestment>
-    <!--投资记录-->
-    <userInvestment></userInvestment>
+
   </div>
+  <!--投资记录-->
+  <userInvestment></userInvestment>
 </template>
 
 <script setup lang="ts">
@@ -23,4 +24,5 @@ import userInvestment from './userInvestment/userInvestment.vue'
 import directInvestment from './directInvestment/directInvestment.vue'
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>

@@ -1,42 +1,35 @@
 <template>
   <div class="m-4">
-    <div class="text-2xl">
-      直接投资回报率排名
+    <div class="flex">
+      <span class="text-2xl flex-auto"> 直接投资回报率排名</span>
+      <a-input-search class="flex-1" v-model:value="value" placeholder="input search text"
+        @search="onSearch"></a-input-search>
     </div>
-    <a-table :columns="columns" :data-source="data">
-      <template #headerCell="{ column }">
-        <template v-if="column.key === 'name'">
-          <span>
-            <smile-outlined />
-            Name
-          </span>
-        </template>
-      </template>
-
+    <a-table :columns="columns" :data-source="data"  :pagination="{ pageSize: 50 }">
       <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'name'">
+        <template v-if="column.key === 'date'">
           <a>
-            {{ record.name }}
+            {{ record.date }}
           </a>
         </template>
-        <template v-else-if="column.key === 'tags'">
+        <template v-else-if="column.key === 'analyses'">
+          <a>
+            {{ record.analyses }}
+          </a>
+        </template>
+        <template v-else-if="column.key === 'spent'">
           <span>
-            <a-tag v-for="tag in record.tags" :key="tag"
-              :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'">
-              {{ tag.toUpperCase() }}
-            </a-tag>
+            {{ record.spent }}
           </span>
         </template>
-        <template v-else-if="column.key === 'action'">
+        <template v-else-if="column.key === 'money'">
           <span>
-            <a>Invite 一 {{ record.name }}</a>
-            <a-divider type="vertical" />
-            <a>Delete</a>
-            <a-divider type="vertical" />
-            <a class="ant-dropdown-link">
-              More actions
-              <down-outlined />
-            </a>
+            {{ record.money }}
+          </span>
+        </template>
+        <template v-else-if="column.key === 'result'">
+          <span>
+            {{ record.result }}
           </span>
         </template>
       </template>
@@ -45,58 +38,68 @@
 </template>
 
 <script setup lang="ts">
-
-import { SmileOutlined, DownOutlined } from '@ant-design/icons-vue';
 const columns = [
   {
-    name: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: '日期',
+    dataIndex: 'date',
+    key: 'date',
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: '分析',
+    dataIndex: 'analyses',
+    key: 'analyses',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: '投入',
+    dataIndex: 'spent',
+    key: 'spent',
   },
   {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
+    title: '盈利',
+    dataIndex: 'money',
+    key: 'money',
   },
   {
-    title: 'Action',
-    key: 'action',
+    title: '结果',
+    key: 'result',
   },
 ];
 
 const data = [
   {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    date: '1',
+    analyses: 'John Brown',
+    spent: 32,
+    money: 'New York No. 1 Lake Park',
+    result: ['nice', 'developer'],
   },
   {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    date: '2',
+    analyses: 'Jim Green',
+    spent: 42,
+    money: 'London No. 1 Lake Park',
+    result: ['loser'],
   },
   {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    date: '3',
+    analyses: 'Joe Black',
+    spent: 32,
+    money: 'Sidney No. 1 Lake Park',
+    result: ['cool', 'teacher'],
   },
 ];
+import { ref } from 'vue';
+const value = ref<string>('');
+/**
+ *
+ * @param searchValue
+ * Todo
+ */
+const onSearch = (searchValue: string) => {
+  console.log('use value', searchValue);
+  console.log('or use this.value', value.value);
+};
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
